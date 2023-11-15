@@ -25,10 +25,18 @@ public class Quiz {
 		return sum;
 	}
 	
-	public void takeQuiz() {
-		//FIXME
-	}
-	
+    public void takeQuiz() {
+        int totalScore = 0;
+        for (Question q : questions) {
+            q.displayPrompt();
+            String userAnswer = getUserAnswer();
+            int score = q.checkAnswer(userAnswer);
+            totalScore += score;
+            System.out.println("You scored " + score + " points on this question.");
+        }
+        System.out.println("Quiz completed! Your total score: " + totalScore + "/" + getTotalPoints());
+    }
+    
 	public static void main(String[] args) {
 		Question q = new Question("What number studio is this?", "8", 2);
 
